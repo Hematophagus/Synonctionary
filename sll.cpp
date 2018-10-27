@@ -59,7 +59,9 @@ int addToEnd(list *l, void *data){
 		node *newN = newNode(data);
 		
 		if(newN != NULL){
-			
+			if(l -> head == NULL)
+				l -> head = newN;
+				
 			if(l -> tail != NULL){
 				node *prev = l -> tail;
 			 	prev -> next = newN;
@@ -143,6 +145,16 @@ void *searchNode(list *l, void *key){
 	return NULL;	
 }
 
+void *getByIndex(list *l, int i){
+	if(l -> size > i){
+		node *temp = l -> head;
+		for(int k = 0; k < i; k++)
+			temp = temp -> next;
+		return temp -> data;
+	}
+	return NULL;
+}
+
 void removeNode(list *l, void *key){
 	if(l != NULL && l -> head != NULL){
 		node *temp = l -> head;
@@ -178,10 +190,11 @@ void removeNode(list *l, void *key){
 
 void printList(list *l){
 	node *temp = l -> head;
-	
+	int i = 0;
 	while(temp != NULL){
 		l -> print(temp -> data);
 		temp = temp -> next;
+		i++;
 	}
 }
 

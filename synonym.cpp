@@ -24,6 +24,10 @@ dic *newWord(char *word, Remove remSyn, Compare compSyn, Print printSyn){
 	return newW;
 }
 
+void insertIndex(list *l, dic *word){
+	word -> index = sizeOfList(l);
+}
+
 int registerSynonym(dic *word, char *syn){
 	if(word != NULL)
 		return addInOrder(word -> l, (void *)syn);
@@ -31,12 +35,12 @@ int registerSynonym(dic *word, char *syn){
 
 void printSynonyms(dic *word){
 	if(word != NULL){
-		cout << "Sinonimos de \"" << word -> word << "\" :\n";
+		cout << "\"" << word -> word << "\" :\n";
 		printList(word -> l);
 	}
 }
 
-void destroyDic(dic **word){
+void destroyWord(dic **word){
 	dic *temp = *word;
 	
 	destroyList(temp -> l);

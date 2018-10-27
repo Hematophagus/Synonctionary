@@ -38,6 +38,8 @@ int addInOrder(list *l, void *data);
 
 void *searchNode(list *l, void *key);
 
+void *getByIndex(list *l, int i);
+
 void removeNode(list *l, void *key);
 
 int sizeOfList(list *l);

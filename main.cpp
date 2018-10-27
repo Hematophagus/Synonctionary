@@ -3,47 +3,45 @@
 #include <iostream>
 #include "sll.h"
 #include "synonym.h"
+#include "callback.h"
 
 using namespace std;
 
-void rem(void *a){
-	char *a1 = (char *)a; 	
+int main(){	
+	list *Dic = loadDic(remWord, remSym, compWord, compSym, printWord, printSym);
+	int op;
 	
-	delete a1;
-}
-
-int comp(void *a, void *b){
-	char *a1 = (char *)a; 	
-	char *b1 = (char *)b; 
-	
-	return strcmp(a1, b1);
-}
-
-void print(void *a){
-	char *a1 = (char *)a; 	
-	
-	cout << a1 << "\n";
-}
-
-int main(){
-	dic *word;
-	char *palavra = new char[10];
-	
-	cin >> palavra;
-	
-	word = newWord(palavra, rem, comp, print);
-	
-	for(int i = 0; i < 3; i++){
-		palavra = new char[10];
+	do{
+		system("cls");
 		
-		cin >> palavra;
+		cout << "===========================\n       SYNONCTIONARY\n===========================\n";
 		
-		registerSynonym(word, palavra);
-	}
-	system("cls");
+		cout << "[1] Cadastrar Nova Palavra\n[2] Cadastrar Novos Sinonimos\n[3] Imprimir Dicionario\n[0] Sair\n===========================\n";
+		
+		cin >> op;
+		
+		switch(op){
+			case 1:
+				registerWord(Dic, remSym, compSym, printSym);
+				break;
+			case 2:
+				addSynToWord(Dic);
+				break;
+			case 3:
+				printList(Dic);
+				break;
+			case 0:
+				break;
+			default:
+				cout << "Opcao Invalida\n";
+		}
+		system("pause");
+	}while(op != 0);
 	
-	printSynonyms(word);
 	
-	destroyDic(&word);
+	saveDic(Dic);
+		
+	destroyList(Dic);
+	
 	return 0;
 }
