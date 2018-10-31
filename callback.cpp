@@ -45,6 +45,5 @@ int compWord(void *a, void *b){
 void printWord(void *a){
 	dic *a1 = (dic *)a; 	
 	
-	cout << "[" << a1 -> index << "] ";
-	printSynonyms(a1);
+	cout << "[" << a1 -> index << "] " << a -> word << "\n";
 }
