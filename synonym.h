@@ -16,6 +16,8 @@ int registerSynonym(dic *word, char *syn);								//check
 
 void printSynonyms(dic *word);											//check
 
+void printDictionary(list *l);
+
 void insertIndex(list *l, dic *word);									//check
 
 void destroyWord(dic **word);											//check

@@ -32,6 +32,8 @@ int addToBegin(list *l, void *data);
 
 int addToEnd(list *l, void *data);
 
+void listCat(list *a, list *b);
+
 int addBefore(list *l, node *ref, void *data);
 
 int addInOrder(list *l, void *data);
@@ -47,5 +49,9 @@ int sizeOfList(list *l);
 void printList(list *l);
 
 void destroyList(list *l);
+
+void inverteElementos (node *e, node *ant);
+
+void inverter (list *p);
 
 #endif //SLL_H

@@ -76,24 +76,26 @@ void addSynToWord(list *l){
 	cout << "Selecione a palavra a qual o sinonimo sera associada [0 - " << sizeOfList(l)-1 << "]\n" ;
 	printList(l);
 	int a, op;
+	char *entrada;
 	cin >> a;
 	
 	dic *b = (dic *)getByIndex(l, a);  
 	if(b != NULL){
+		system("cls");
+		cout << "Digite sua lista de sinonimos e /end para encerrar\n";
 		do{
-			cout << "Digite o sinonimo:\n";
 			
-			char *entrada = new char[51];
+			
+			entrada = new char[51];
 			
 			cin >> entrada;
 			
-			if(registerSynonym(b, entrada))
-				cout << "Sinonimo Registrado\n";
-			else 
-				cout << "Sinonimo Nao Registrado\n";
-			cout << "Cadastrar Novo Sinonimo para " << b -> word << "? [0/1]\n";
-			cin >> op;
-		}while(op != 0);
+			if(strcmp("/end", entrada))
+				if(registerSynonym(b, entrada))
+					cout << "Sinonimo Registrado\n";
+				else 
+					cout << "Sinonimo Nao Registrado\n";
+		}while(strcmp("/end", entrada));
 	}else
 		cout << "Opção invalida\n";
 }
@@ -137,5 +139,12 @@ void sortIndex(list *l){
 	for(int i = 0; i < sizeOfList(l); i++){
     	dic *temp = (dic *)getByIndex(l, i);
     	temp -> index = i;	
+	}
+}
+
+void printDictionary(list *l){
+	for(int i = 0; i < sizeOfList(l); i++){
+		dic *Word = (dic *)getByIndex(l, i);
+		printSynonyms(Word);
 	}
 }

@@ -35,8 +35,9 @@ int registerSynonym(dic *word, char *syn){
 
 void printSynonyms(dic *word){
 	if(word != NULL){
-		cout << "\"" << word -> word << "\" :\n";
+		cout << "\"" << word -> word << "\":\n";
 		printList(word -> l);
+		cout << "\n";
 	}
 }
 

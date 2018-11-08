@@ -23,7 +23,7 @@ int compSym(void *a, void *b){
 void printSym(void *a){
 	char *a1 = (char *)a; 	
 	
-	cout << "\t- " << a1 << "\n";
+	cout << "   - " << a1 << "\n";
 }
 
 void remWord(void *a){
@@ -45,6 +45,7 @@ int compWord(void *a, void *b){
 void printWord(void *a){
 	dic *a1 = (dic *)a; 	
 	
-	cout << "[" << a1 -> index << "] ";
-	printSynonyms(a1);
+	cout << "[" << a1 -> index << "] " << a1 -> word << "\n";
+//	printSynonyms(a1);
+	
 }

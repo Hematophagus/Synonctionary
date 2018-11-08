@@ -28,7 +28,7 @@ int main(){
 				addSynToWord(Dic);
 				break;
 			case 3:
-				printList(Dic);
+				printDictionary(Dic);
 				break;
 			case 0:
 				break;

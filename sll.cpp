@@ -79,6 +79,14 @@ int addToEnd(list *l, void *data){
 	return 0;
 }
 
+void listCat(list *a, list *b){
+	if(a != NULL && b != NULL){
+		node *temp = a -> tail ;
+		temp -> next = b -> head;
+		a -> tail = b -> tail;
+	}
+}
+
 int sizeOfList(list *l){
 	return l -> size;
 }
@@ -207,4 +215,19 @@ void destroyList(list *l){
 		temp = temp -> next;
 		delete tmp;
 	}
+}
+
+void inverteElementos (node *e, node *ant){
+    if(e -> next != NULL)
+        inverteElementos(e -> next, e);
+    e->next = ant;
+}
+
+void inverter (list *p){
+    inverteElementos(p -> head, NULL);
+
+    //Inverte inicio com fim
+    node *aux = p->head;
+    p->head = p->tail;
+    p->tail = aux;
 }
