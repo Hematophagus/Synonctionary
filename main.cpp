@@ -4,6 +4,8 @@
 #include "sll.h"
 #include "synonym.h"
 #include "callback.h"
+#include "text.h"
+
 
 using namespace std;
 
@@ -30,7 +32,18 @@ int main(){
 			case 3:
 				printDictionary(Dic);
 				break;
-			case 0:
+			case 4:{
+				char *buffer = new char [100];
+				cin.ignore();
+				cin.getline(buffer, 99);
+				list *ll = getWords(buffer); 
+				saveOccurrences(ll, buffer);
+				printList(ll);
+				
+				delete []buffer;
+				destroyList(ll);
+				break;
+			}case 0:
 				break;
 			default:
 				cout << "Opcao Invalida\n";

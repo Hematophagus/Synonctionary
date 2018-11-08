@@ -13,5 +13,9 @@ int compWord(void *a, void *b);
 
 void printWord(void *a);
 
+void remTerm(void *a);
 
+int compTerm(void *a, void *b);
+
+void printTerm(void *a);
 #endif //CALLBACK_H

@@ -3,6 +3,7 @@
 #include <iostream>
 #include "sll.h"
 #include "synonym.h"
+#include "text.h"
 #include "callback.h"
 
 using namespace std;
@@ -48,4 +49,24 @@ void printWord(void *a){
 	cout << "[" << a1 -> index << "] " << a1 -> word << "\n";
 //	printSynonyms(a1);
 	
+}
+
+void remTerm(void *a){
+	term *a1 = (term *)a; 	
+	
+	delete []a1 -> wrd;
+	delete []a1;
+}
+
+int compTerm(void *a, void *b){
+	term *a1 = (term *)a; 	
+	term *b1 = (term *)b; 
+	
+	return strcmp(a1 -> wrd, b1 -> wrd);
+}
+
+void printTerm(void *a){
+	term *a1 = (term *)a; 	
+	
+	cout << a1 -> oc << "   - " << a1 -> wrd << "\n";
 }
